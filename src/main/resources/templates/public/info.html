@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Donation website &mdash; Website Donation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Free-Template.co" />
+    <link rel="shortcut icon" href="/user/assets/images/ftco-32x32.png">
+    <link rel="stylesheet" href="/user/assets/css/custom-bs.css">
+    <link rel="stylesheet" href="/user/assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/user/assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/user/assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/user/assets/fonts/line-icons/style.css">
+    <link rel="stylesheet" href="/user/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/user/assets/css/animate.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="/user/assets/css/style.css">
+
+    <script src="/user/assets/js/jquery.min.js"></script>
+    <script src="/user/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/user/assets/js/isotope.pkgd.min.js"></script>
+    <script src="/user/assets/js/stickyfill.min.js"></script>
+    <script src="/user/assets/js/jquery.fancybox.min.js"></script>
+    <script src="/user/assets/js/jquery.easing.1.3.js"></script>
+
+    <script src="/user/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/user/assets/js/jquery.animateNumber.min.js"></script>
+    <script src="/user/assets/js/owl.carousel.min.js"></script>
+    <script src="/user/assets/js/bootstrap-select.min.js"></script>
+    <script src="/user/assets/js/custom.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<body id="top">
+
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div th:if="${msg}" class="toast" data-delay="1000" style="position:fixed; top: 100PX; left: 40PX;z-index: 2000;width: 300px">
+</div>
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="/">Website Quyên Góp</a></div>
+
+                <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+                    <div class="ml-auto">
+                        <a th:if="${session.user}" th:text="${session.user.fullName}" th:href="@{/user/info}" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"></span>Post a Job</a>
+                        <a th:href="@{/user/logout}" th:if="${session.user}" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Log Out</a>
+                        <a th:href="@{/user/login}" th:unless="${session.user}" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
+                    </div>
+                    <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- HOME -->
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url('/user/assets/images/hero_1.jpg');" id="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1 class="text-white font-weight-bold">Thông tin chi tiết tài khoản người sử dụng</h1>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="site-section">
+        <div class="container">
+
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-7 text-center">
+                    <h2 class="section-title mb-2" >Thông tin người dùng</h2>
+                </div>
+            </div>
+            <div class="bg-light p-3 border rounded mb-4">
+                <ul class="list-unstyled pl-3 mb-0">
+                    <li class="mb-2">
+                        <strong class="text-black d-inline">Tên người dùng:</strong>
+                        <p class="d-inline" th:text="${session.user.fullName}"></p>
+                    </li>
+                    <li class="mb-2">
+                        <strong class="text-black">Email:</strong>
+                        <p class="d-inline" th:text="${session.user.email}"></p>
+                    </li>
+                    <li class="mb-2">
+                        <strong class="text-black">Địa chỉ:</strong>
+                        <p class="d-inline" th:text="${session.user.address}"></p>
+                    </li>
+
+                    <li class="mb-2">
+                        <strong class="text-black">Trạng thái:</strong>
+                        <p class="d-inline" th:text="${session.user.status}"></p>
+                    </li>
+                    <li class="mb-2"
+                    ><strong class="text-black">Thời gian lập tài khoản: </strong>
+                        <p class="d-inline" th:text="${session.user.created}"></p>
+                    </li>
+                    <li class="mb-2">
+                        <strong class="text-black">Loại tài khoản:</strong>
+                        <p class="d-inline" th:text="${session.user.role.roleName}"></p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+</body>
+</html>
